@@ -1,0 +1,131 @@
+//Microsoft Windows [Version 10.0.16299.726]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\Users\Jey Fawker's>cd c:/xampp/mysql/bin
+
+c:\xampp\mysql\bin>mysql.exe -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.31-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| latihan            |
+| latihan01          |
+| latihan02          |
+| latihan03          |
+| mahasiswa01        |
+| mysql              |
+| pegawi             |
+| performance_schema |
+| phpmyadmin         |
+| praktikum04        |
++--------------------+
+11 rows in set (0.06 sec)
+
+MariaDB [(none)]> use latihan02;
+Database changed
+MariaDB [latihan02]> create table biodata(nama varchar(50), alamat text);
+Query OK, 0 rows affected (0.57 sec)
+
+MariaDB [latihan02]> desc biodata;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nama   | varchar(50) | YES  |     | NULL    |       |
+| alamat | text        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+MariaDB [latihan02]> alter table biodata add column nim int(10) first;
+Query OK, 0 rows affected (0.54 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [latihan02]> desc biodata;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nim    | int(10)     | YES  |     | NULL    |       |
+| nama   | varchar(50) | YES  |     | NULL    |       |
+| alamat | text        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+MariaDB [latihan02]> alter table biodata change alamat alamat_jalan varchar(50);
+Query OK, 0 rows affected (0.92 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [latihan02]> desc biodata;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| nim          | int(10)     | YES  |     | NULL    |       |
+| nama         | varchar(50) | YES  |     | NULL    |       |
+| alamat_jalan | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+MariaDB [latihan02]> alter table biodata modify alamat_jalan TINYTEXT;
+Query OK, 0 rows affected (1.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [latihan02]> desc biodata;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| nim          | int(10)     | YES  |     | NULL    |       |
+| nama         | varchar(50) | YES  |     | NULL    |       |
+| alamat_jalan | tinytext    | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+MariaDB [latihan02]> alter table biodata drop alamat_jalan;
+Query OK, 0 rows affected (0.61 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [latihan02]> desc biodata;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| nim   | int(10)     | YES  |     | NULL    |       |
+| nama  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.04 sec)
+
+MariaDB [latihan02]> alter table biodata ADD PRIMARY KEY(nim);
+Query OK, 0 rows affected (0.94 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [latihan02]> desc biodata;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| nim   | int(10)     | NO   | PRI | NULL    |       |
+| nama  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.04 sec)
+
+MariaDB [latihan02]> alter table biodata DROP PRIMARY KEY;
+Query OK, 0 rows affected (1.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [latihan02]> desc biodata;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| nim   | int(10)     | NO   |     | NULL    |       |
+| nama  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+MariaDB [latihan02]> Bye
+Ctrl-C -- exit!
+
+c:\xampp\mysql\bin>
